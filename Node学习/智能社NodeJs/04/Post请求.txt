@@ -1,0 +1,6 @@
+req.on("data",function(data){//data事件
+
+});
+req.on("end",function(){//end事件
+
+});

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/vue.js"></script>
+    <title>事件处理</title>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="counter+=1">加1</button>
+        <span>{{counter}}</span>
+        <hr>
+        <button v-on:click="greet()">调用方法</button>
+        <hr>
+        <button v-on:click="say('hi')">say hi</button>
+        <button v-on:click="say('what')">say what</button>
+        <hr>
+        <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+            Submit
+        </button>
+        <hr>
+        <input type="text" v-on:keyup.enter="enter">
+        <hr>
+        <input @keyup.page-down="enter">
+        <hr>
+        <!-- 即使 Alt 或 Shift 被一同按下时也会触发 -->
+        <button @click.ctrl="enter">即使 Alt 或 Shift 被一同按下时也会触发</button>
+
+        <!-- 有且只有 Ctrl 被按下的时候才触发 -->
+        <button @click.ctrl.exact="enter">有且只有 Ctrl 被按下的时候才触发</button>
+
+        <!-- 没有任何系统修饰符被按下的时候才触发 -->
+        <button @click.exact="enter">没有任何系统修饰符被按下的时候才触发</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                "counter": 0,
+                "name": "vue.js"
+            },
+            methods: {
+                greet: function(event) {
+                    alert("Hello," + this.name);
+                    if (event) {
+                        console.log(event);
+                    }
+                },
+                say: function(message) {
+                    alert(message);
+                },
+                warn: function(message, event) {
+                    if (event) {
+                        event.preventDefault();
+                        alert(message);
+                    }
+                },
+                enter: function() {
+                    alert("回车");
+                }
+
+            },
+            watch: {
+                counter: function(newvalue, oldvalue) {
+                    console.log(newvalue);
+                    console.log(oldvalue);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

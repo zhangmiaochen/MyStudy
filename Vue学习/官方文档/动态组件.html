@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/vue.js"></script>
+    <title>动态组件</title>
+    <script>
+        Vue.component('tab-Home', {
+            template: `
+            <div>
+                Home component
+            </div>
+            `
+        });
+        Vue.component('tab-Posts', {
+            template: `
+            <div>
+                Posts component
+            </div>
+            `
+        });
+        Vue.component('tab-Archive', {
+            template: `
+            <div>
+                Archive component
+            </div>
+            `
+        });
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <button v-for="item in tabs" v-on:click="currentTab=item">{{item}}</button>
+        <!-- 组件会在 `currentTabComponent` 改变时改变 -->
+        <component v-bind:is="currentTabComponent"></component>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                tabs: ['Home', 'Posts', 'Archive'],
+                currentTab: 'Home',
+            },
+            computed: {
+                currentTabComponent: function() {
+                    return 'tab-' + this.currentTab
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

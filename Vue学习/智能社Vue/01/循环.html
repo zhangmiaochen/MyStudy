@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <script>
+        window.onload = function() {
+            new Vue({
+                el: "#box",
+                data: {
+                    arr: ["apple", "banana", "pear"],
+                    json: {
+                        a: "apple",
+                        b: "banana",
+                        c: "pear"
+                    }
+                }
+            });
+        };
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li v-for="value in arr">
+                {{value}}——{{$index}}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="item in json">
+                {{item}}——{{$index}}——{{$key}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

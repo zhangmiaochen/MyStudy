@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>通过事件向父级组件发送消息</title>
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component('news-temp', {
+            props: ['todo'],
+            template: `
+                <div class="">
+                    <button v-on:click="$emit('change-w')" v-bind:style="{width:todo+'px'}">改变大小</button>
+                </div>
+            `
+        });
+    </script>
+</head>
+
+<body>
+    <div id="app" v-bind:style="{width:width+'px'}">
+        <news-temp v-on:change-w="width+=10" v-bind:todo="width"></news-temp>
+        <news-temp v-on:change-w="width+=10" v-bind:todo="width"></news-temp>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                width: 100
+            }
+        });
+    </script>
+</body>
+
+</html>

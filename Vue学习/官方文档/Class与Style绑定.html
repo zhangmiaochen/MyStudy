@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/vue.js"></script>
+    <title>Class与Style绑定</title>
+    <script>
+        Vue.component('my-component', {
+            template: "<p class='foo bar'>Hi</p>"
+        });
+    </script>
+</head>
+
+<body>
+    <div id="app" v-bind:class="classObject">
+        Class与Style绑定
+        <my-component class="baz"></my-component>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                classObject: {
+                    "active": true,
+                    "text-danger": false,
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

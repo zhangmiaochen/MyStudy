@@ -1,0 +1,63 @@
+模板引擎：
+jade-破坏、侵入式、强依赖
+
+ejs-温和、非侵入式、弱依赖
+
+html            <html></html>
+
+jade
+1.根据缩进，规定层级
+属性放在()里面，逗号分隔
+<script src=""></script>
+
+
+内容空个格，直接往后写
+<a href="http://www.baidu.com/"></a>
+a(href="http://www.baidu.com/") 官网
+
+
+div 29
+
+
+
+style="width:200px;height:200px;background:red";
+1.普通属性写法
+div(style="width:200px;height:200px;background:red")
+
+2.用json
+div(style={width:"200px",height:"200px",background:"red"})
+
+class="aa left-swrap active"
+
+1.普通属性写法
+2.用数组
+
+
+
+简写
+
+
+
+
+
+
+
+
+
+模板引擎：生成页面
+1.jade:破坏式
+2.ejs:保留式
+
+
+jade
+1.根据缩进划分层级
+2.属性用()表示，用逗号分隔
+style={}
+class=[]
+3.内容
+div xxx
+    span xxx
+        a("href="http://www.baidu.com") 链接
+
+jade.render("字符串")
+jade.renderFile("模板文件名",参数)

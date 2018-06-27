@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/jquery-1.9.1.js"></script>
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var user = document.getElementById("user");
+            var pass = document.getElementById("pass");
+            var btn1 = document.getElementById("btn1");
+            btn1.onclick = function() {
+                $.ajax({
+                    url: '/login',
+                    type: "get",
+                    data: {
+                        "user": user.value,
+                        "pass": pass.value
+                    },
+                    dataType: "json",
+                    success: function(str) {
+                        if (str.ok) {
+                            alert("登录成功");
+                        } else {
+                            alert("登录失败：" + str.msg);
+                        }
+                    },
+                    err: function(msg) {
+                        alert("通信错误");
+                    }
+                });
+            };
+        };
+    </script>
+</head>
+
+<body>
+    用户名：<input type="text" id="user"><br> 密码：
+    <input type="password" id="pass"><br>
+    <input type="button" value="登录" id="btn1">
+</body>
+
+</html>

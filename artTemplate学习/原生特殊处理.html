@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/template-web.js"></script>
+    <title>Document</title>
+    <script type="text/html" id="tpl">
+        <p><%=#msg%></h1>
+    </script>
+    <script type="text/javascript">
+        var data={
+          msg:'<strong>我是加粗</strong>',
+        };
+        window.onload=function(){
+          var oBox=document.getElementById("box");
+          var sHTML=template("tpl",data);
+          oBox.innerHTML=sHTML;
+    };
+    </script>
+</head>
+
+<body>
+  <div id="box"></div>
+</body>
+
+</html>

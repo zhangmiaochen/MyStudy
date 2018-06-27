@@ -1,0 +1,7 @@
+用户注册、登录
+
+接口
+/user?act=reg&user=aaa&pass=123
+{"ok":true,"msg":"原因"}
+/user?act=loign&user=aaa&pass=123
+{"ok":true,"msg":"原因"}

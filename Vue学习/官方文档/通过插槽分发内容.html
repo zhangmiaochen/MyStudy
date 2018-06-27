@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/vue.js"></script>
+    <title>通过插槽分发内容</title>
+    <script>
+        Vue.component('my-component', {
+            template: `         
+            <div>
+                <slot>
+                只有在没有要分发的内容时才会显示。
+                </slot>
+                <h2>我是子组件的标题</h2>
+            </div>
+            `
+        });
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <my-component>
+            <span>464646</span>
+        </my-component>
+    </div>
+    <script>
+        var vm = new Vue({
+
+        });
+    </script>
+</body>
+
+</html>

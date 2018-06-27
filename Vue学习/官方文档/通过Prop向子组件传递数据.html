@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/vue.js"></script>
+    <title>通过Prop向子组件传递数据</title>
+    <script>
+        Vue.component('news-temp', { //单个根元素
+            props: ['todo'],
+            template: '<li>{{todo.content}}</li>'
+        });
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <news-temp v-for="item in newsList" v-bind:todo="item" v-bind:title="item.title"></news-temp>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                newsList: [{
+                    "id": 0,
+                    "title": "news1",
+                    "content": "正文1"
+                }, {
+                    "id": 1,
+                    "title": "news2",
+                    "content": "正文2"
+                }, {
+                    "id": 2,
+                    "title": "news3",
+                    "content": "正文3"
+                }, {
+                    "id": 3,
+                    "title": "news4",
+                    "content": "正文4"
+                }, ]
+            }
+        });
+    </script>
+</body>
+
+</html>

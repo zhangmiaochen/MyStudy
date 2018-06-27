@@ -1,0 +1,86 @@
+优点：
+1.性能高
+2.兼容所有浏览器
+3.模板语句简洁
+
+模板的定义
+<script type="text/html" id="tpl">
+    <h1>{{title}}</h1>
+</script>
+
+
+
+
+模板和数据的关联
+<script>
+    var data = {
+        title: "welcome ArtTemplate"
+    };
+    window.onload = function() {
+        var oBox = document.getElementById("box");
+        var sHTML = template('tpl', data);
+        oBox.innerHTML = sHTML;
+    };
+</script>
+
+
+数据：
+var data = {
+        title: "welcome ArtTemplate",
+        arr: ["apple", "banana", "orange", "pear"]
+};
+循环：
+<ul>
+    {{each arr as value key}}
+    <li>{{value}}--{{key}}</li>
+    {{/each}}
+</ul>
+
+
+
+原生语法：
+<%=title%>
+
+
+ <%for(var i=0;i<arr.length;i++){%>
+    <li>
+    <%=arr[i]%>--
+    <%=i+1%>
+    </li>
+<%}%>
+
+
+非转义输出
+<%=#msg%>
+{{#msg}}
+
+
+
+
+模板放入了js里面
+var str="<ul>"+
+"<%for(var i=0;i<arr.length;i++){%>" +
+"<li><%=arr[i]%></li>" +
+"<%}%>"+
+"</ul>";
+
+var render=template.compile(str);//编译
+var sHTML= render(data);//填数据
+oBox.innerHTML=sHTML;
+
+
+
+
+
+
+扩展artTemplate函数功能（自定义函数）
+template.helper();
+
+
+
+打印数据 print
+print() 直接输出数据
+
+
+
+自定义模板标记

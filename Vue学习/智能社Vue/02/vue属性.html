@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            new Vue({
+                el: "#box",
+                data: {
+                    src: "http://img.taopic.com/uploads/allimg/121019/234917-121019231h258.jpg",
+                    width: "100px",
+                    t: "这是一张美丽的图片"
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <img src="{{src}}" alt="" :width="width"><br>
+        <img v-bind:src="src" alt="" style="width:100%;" :title="t">
+        <img :src="src" alt="" style="width:100%;">
+    </div>
+</body>
+
+</html>

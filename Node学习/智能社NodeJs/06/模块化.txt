@@ -1,0 +1,76 @@
+DNS getSevers 解析IP地址
+重要模块
+Crypto 加密
+Events 事件
+Net    网络操作
+OS     操作系统信息
+Path   处理文件路径
+Stream 流操作
+Timers 定时器
+ZLIB   压缩
+
+
+自定义模块
+
+1.模块组成
+2.npm
+3.发布自己的模块
+
+
+引入自己的模块——要加个./
+对外输出东西——必须加给exports
+
+exports.xxx
+exports.xxx
+exports.xxx
+//多个输出
+module.exports={
+    exports.xxx
+    exports.xxx
+    exports.xxx
+}
+
+require——引入其他模块
+exports——输出
+module——批量输出
+
+".js"可选
+
+
+npm：NodeJS Package Manage(NodeJS包管理器)
+1.统一下载途径
+2.自动下载依赖
+
+
+npm install xxx 安装
+npm uninstall xxx 删除
+
+
+
+node_modules——放模块
+
+
+./
+不加./  必须放在node_modules里面
+
+
+require
+1.如果有./
+    从当前目录找
+2.如果没有./
+    先从系统模块
+    再从node_modules找
+
+自定义模块，都放到node_modules里面
+
+
+
+
+发布自己的模块
+npm init //初始化包信息
+npm publish //发布包
+npm --force unpublish //删除包，一次只能删除一个版本
+
+
+
+

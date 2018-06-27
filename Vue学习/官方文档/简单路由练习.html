@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <title>简单路由练习</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>路由练习</h1>
+        <ul>
+            <li>
+                <router-link to="/one">go go the one</router-link>
+            </li>
+            <li>
+                <router-link to="/two">go go the two</router-link>
+            </li>
+            <li>
+                <router-link to="/three">go go the three</router-link>
+            </li>
+        </ul>
+        <router-view></router-view>
+    </div>
+    <script>
+        //定义组件模板
+        const one = {
+            template: `
+                <div>one</div>
+            `
+        };
+        const two = {
+            template: `
+                <div>two</div>
+            `
+        };
+        const three = {
+            template: `
+                <div>three</div>
+            `
+        };
+        //定义组件
+        const routes = [{
+            path: '/one',
+            component: one
+        }, {
+            path: '/two',
+            component: two
+        }, {
+            path: '/three',
+            component: three
+        }];
+        //实例化路由
+        const router = new VueRouter({
+            routes
+        });
+        //绑定路由到根实例
+        new Vue({
+            router
+        }).$mount("#app"); //#mount()为手动挂载（延时挂载）
+    </script>
+</body>
+
+</html>

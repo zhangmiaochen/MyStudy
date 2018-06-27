@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/template-web.js"></script>
+    <title>Document</title>
+    <script type="text/html" id="tpl">
+        <h1>{{title}}</h1>
+        <ul>
+            {{each arr as value key}}
+            <li>{{value}}--{{key}}</li>
+            {{/each}}
+        </ul>
+        <ul>
+            {{each json as value key}}
+            <li>{{value}}--{{key}}</li>
+            {{/each}}
+        </ul>
+    </script>
+    <script>
+        var data = {
+            title: "welcome ArtTemplate",
+            arr: ["apple", "banana", "orange", "pear"],
+            json: {
+                a: "apple",
+                b: "banana",
+                c: "orange",
+                d: "pear"
+            }
+        };
+        window.onload = function() {
+            var oBox = document.getElementById("box");
+            var sHTML = template('tpl', data);
+            oBox.innerHTML = sHTML;
+        };
+    </script>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+
+</html>

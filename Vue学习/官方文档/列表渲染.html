@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/vue.js"></script>
+    <title>列表渲染</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in items" v-bind:key="item.index">
+                {{item.message}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(value,key,index) in object" v-bind:key="key">
+                {{index+1}}-{{key}}:{{value}}
+            </li>
+        </ul>
+        <span v-for="item in 10">
+            {{item}}
+        </span>
+        <ul>
+            <template v-for="item in object">
+                <li>{{item}}</li>
+                <li class="zmc"></li>
+            </template>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                items: [{
+                    message: 'Foo'
+                }, {
+                    message: 'Bar'
+                }],
+                object: {
+                    "firstName": 'john',
+                    "lastName": 'Doe',
+                    "age": 30
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

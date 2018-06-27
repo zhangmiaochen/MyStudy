@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/template-web.js"></script>
+    <title>Document</title>
+    <script type="text/html" id="tpl">
+        <h1>
+            <%=title%>
+        </h1>
+        <%include('list')%>
+            <%include('list2')%>
+    </script>
+    <script type="text/html" id="list">
+        <ul>
+            <%for(var i=0;i<arr.length;i++){%>
+                <li>
+                    <%=arr[i]%>--
+                        <%=i+1%>
+                </li>
+                <%}%>
+        </ul>
+    </script>
+    <script type="text/html" id="list2">
+        <ul>
+            <%for(var name in json){%>
+                <li>
+                    <%=name%>---
+                        <%=json[name]%>
+                </li>
+                <%}%>
+        </ul>
+    </script>
+    <script>
+        var data = {
+            title: "Welcome artTemplate",
+            arr: ["apple", "banana", "orange", "pear"],
+            json: {
+                a: "aaa",
+                b: "bbb",
+                c: "ccc",
+                d: "ddd"
+            }
+        };
+        window.onload = function() {
+            var oBox = document.getElementById("box");
+            var sHTML = template("tpl", data);
+            oBox.innerHTML = sHTML;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+事件：
+v-on：click简写为@click 
+
+事件对象：
+@click="show($event)"
+
+事件冒泡：
+
+    阻止冒泡:
+        a).ev.cancelBubble = true;
+        b).@click.stop  推荐
+
+    默认行为（默认事件）:
+        阻止默认行为
+            a).ev.preventDefault();
+            b).@contextmenu.prevent     推荐
+
+
+键盘事件：
+@keydown    $event  ev.keyCode
+@keyup
+
+常用键:
+    回车
+        a).@keyup.13
+        b).keyup.enter
+        上、下、左、右
+        keyup/keydown.up
+        keyup/keydown.down
+        keyup/keydown.left
+        keyup/keydown.right
+
+
+属性：
+
+
+
+    v-bind:src=""
+
+    简写：
+    :src=""
+
+    <img src="{{src}}" alt> 效果能出来，但是会报一个404错误
+    <img v:bind:src="src">  效果可以出来，不会发404请求
+
+
+    class和style
+        :class=""   v-bind:class=""
+        :style=""   v-bind:style=""

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            new Vue({
+                el: "#box",
+                data: {
+
+                },
+                methods: {
+                    show: function(ev) {
+                        alert(1);
+                        ev.cancelBubble = true;
+                        ev.preventDefault();
+                    },
+                    show2: function() {
+                        alert(2);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <div @click="show2()">
+            <input type="button" value="按钮" @click.stop="show()">
+        </div>
+        <input type="button" value="按钮" @contextmenu.prevent="show($event)">
+    </div>
+</body>
+
+</html>

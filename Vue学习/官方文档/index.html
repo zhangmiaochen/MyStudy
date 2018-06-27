@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-Cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/vue.js"></script>
+    <title>Vue</title>
+</head>
+
+<body>
+    <div id="app" v-bind:title="'this is  a title'" v-if="seend" v-on:click="alert">
+        <ul>
+            <li v-for="item in list">
+                {{item.text}}
+            </li>
+        </ul>
+        <div id="inputAll">
+            <input type="text" v-model="inputValue">
+            <input type="text" v-model="inputValue">
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello vue!',
+                seend: true,
+                list: [{
+                    text: 'list2'
+                }, {
+                    text: 'list3'
+                }, {
+                    text: 'list4'
+                }, ],
+                inputValue: "46464",
+            },
+            methods: {
+                alert: function() {
+                    console.log("ok");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

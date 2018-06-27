@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/vue.js"></script>
+    <title>Vue实例</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{foo}}</p>
+        <button v-on:click="foo='baz'">Change It</button>
+        <button @click='revelse'>颠倒</button>
+        <p>{{revelse2}}</p>
+        <p>
+            {{html}}
+        </p>
+        <p v-html="html"></p>
+    </div>
+    <script>
+        var obj = {
+            foo: 'bar',
+            html: '<span style="color:red">v-html</span>'
+        };
+        //Object.freeze(obj);
+        var vm = new Vue({
+            el: "#app",
+            data: obj,
+            created: function() {
+                //实例生命周期钩子
+                //created 钩子可以用来在一个实例被创建之后执行代码
+                console.log("created 钩子函数执行");
+            },
+            methods: {
+                revelse: function() {
+                    this.html = this.html.split("").reverse().join('')
+                }
+            },
+            computed: {
+                revelse2: function() {
+                    return this.html.split("").reverse().join('');
+                    //return Date.now()
+                }
+            }
+        });
+        //数据与方法  这个回调将在 `vm.a` 改变后调用
+        vm.$watch('foo', function(newvalue, oldvalue) {
+            console.log(newvalue);
+            console.log(oldvalue);
+        });
+    </script>
+</body>
+
+</html>

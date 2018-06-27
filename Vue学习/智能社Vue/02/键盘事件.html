@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            new Vue({
+                el: "#box",
+                data: {
+
+                },
+                methods: {
+                    show: function(ev) {
+                        alert(1);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" @keyup.enter="show($event)" placeholder="回车">
+        <input type="text" @keyup.up="show($event)" placeholder="上">
+        <input type="text" @keyup.down="show($event)" placeholder="下">
+        <input type="text" @keyup.left="show($event)" placeholder="左">
+        <input type="text" @keyup.right="show($event)" placeholder="右">
+    </div>
+</body>
+
+</html>

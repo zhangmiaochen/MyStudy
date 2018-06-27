@@ -1,0 +1,21 @@
+学习了artTemplate
+
+
+
+
+node:
+1.学习了原生语法
+2.学习了express，包括get和post数据的获取（body-parser和queryString）
+3.学习使用了cookieparser和cookiesession以及它们的签名和加密
+4.学习了jade 和ejs模板引擎
+5.学习了consolidate
+6.学习了mysql
+7.学习使用multer上传文件
+8.学习使用path中间件
+
+
+vue:
+
+
+
+

@@ -1,0 +1,55 @@
+vue基本雏形
+    angular展示一条基本数据：
+        var app=angular.module("app",[]);
+        app.controller("xx",function($scope){
+            $scope.msg="welcome"
+        });
+    html:
+    div ng-controller=""
+        {{msg}}
+
+
+
+
+常用指令：
+    angular:
+        ng-model ng-controller
+    指令：扩展html标签功能
+
+v-model:一般用于表单(input)     双向数据绑定
+
+循环：
+    v-for="name in arr"
+        {{$index}}
+    v-for="name in json"
+        {{$index}}  {{key}}
+    v-for="(k,v) in json"
+
+事件：
+    v-on:click="函数"
+
+    v-on:click/mouseout/mouseover/dblclick/mousedown
+
+    new Vue({
+                el: "#box",
+                data: { //数据
+
+                },
+                methods: {
+                    show: function() {
+                        alert(1);
+                    }
+                }
+            });
+
+
+显示隐藏
+    v-show="true/false"
+
+
+    bootstrap+vue简易留言板(todolist):
+    bootstrap:css框架   跟jqueryMobile一样
+    只需要经标签赋class,角色
+    依赖jquery
+
+确认删除和确认删除全部
