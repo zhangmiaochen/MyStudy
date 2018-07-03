@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/vue.js"></script>
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var vm = new Vue({
+                el: "#app",
+                data: {
+                    "city": null,
+                    "res": null,
+                    divStyle: {
+                        "border": "1px solid #ccc",
+                        "height": "300px",
+                        "marginTop": "20px",
+                        "width": "300px",
+                        "overflow": "auto"
+                    },
+                    btn: {
+                        "width": "100px",
+                        "height": "30px",
+                        "backgroundColor": "#4FC08D",
+                        "border": "none",
+                        "marginTop": "20px",
+                        "color": "#fff",
+                        "cursor": "pointer"
+                    },
+                    "pType": "get",
+                    "TypeList": ["post", "get"]
+                },
+                methods: {
+                    check: function() {
+                        if (this.city) {
+                            $.ajax({
+                                url: "https://bird.ioliu.cn/v1?url=https://www.sojson.com/open/api/weather/json.shtml?city=" + vm.city,
+                                type: vm.pType,
+                                dataType: "json",
+                                success: function(res) {
+                                    console.log(res);
+                                    console.log(vm.city);
+                                    if (res.message == "Success !") {
+                                        vm.res = res.data
+                                    } else {
+                                        vm.res = res.message
+                                    }
+                                },
+                                error: function() {
+                                    console.log("通信错误");
+                                }
+                            });
+                        } else {
+                            alert("请输入您要查询的城市");
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" placeholder="请输入城市" v-model="city">
+        <select name="" id="" v-model="pType">
+            <option v-for="(value,index) in TypeList" :value="value">{{value}}</option>
+        </select>
+        <div>{{pType}}</div>
+        <div :style="{border:divStyle.border,height:divStyle.height,marginTop:divStyle.marginTop,width:divStyle.width,overflow:divStyle.overflow}">
+            {{res}}
+        </div>
+        <input type="button" value="按钮" :style="{width:btn.width,height:btn.height,backgroundColor:btn.backgroundColor,border:btn.border,marginTop:btn.marginTop,color:btn.color,cursor:btn.cursor}" @click="check()">
+    </div>
+</body>
+
+</hcity
