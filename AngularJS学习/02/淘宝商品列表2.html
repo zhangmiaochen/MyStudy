@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="test">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="angular.js"></script>
+    <title>Document</title>
+    <script>
+        var app = angular.module("test", []);
+        app.controller("cont1", function($scope) {
+            $scope.items = [{
+                name: '衣服1',
+                price: 88,
+                time: 1530775621778
+            }, {
+                name: '衣服2',
+                price: 99,
+                time: 1430775621778
+            }, {
+                name: '衣服3',
+                price: 60,
+                time: 1500705621778
+            }, {
+                name: '衣服4',
+                price: 30,
+                time: 1500775621778
+            }, {
+                name: '衣服5',
+                price: 66.6,
+                time: 1510775621778
+            }];
+        });
+    </script>
+</head>
+
+<body>
+    <ul ng-controller="cont1">
+        <li ng-repeat="item in items">
+            <h3>{{item.name}}</h3>
+            <span>{{item.price|currency}}</span>
+            <i>{{item.time|date:"yyyy年MM月dd日  HH:mm:ss"}}</i>
+        </li>
+    </ul>
+</body>
+
+</html>

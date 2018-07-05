@@ -1,0 +1,54 @@
+1.双向绑定
+
+2.依赖注入
+    普通函数：由调用方决定参数
+    ng函数：由定义方决定参数
+
+$scope名称固定，不能改
+
+var app=angular.module("test",[]);
+app.controller("cont1",function($scope){
+    alert(arguments.length);
+});
+
+<body ng-controller="cont1">
+    <input type="text" ng-model="str">
+    <input type=button" value="按钮" ng-click="alert()"/>
+</body>
+
+
+
+function show(a,b)
+{
+    alert(a+b);
+}
+show(12,5);
+
+
+
+controller有两种写法
+app.controller("cont1",function($scope){
+    //alert(arguments.length);
+    $scope.a=2;
+});
+
+app.controller("cont1",[$scope,$http,function(a,b){
+    a.a=2;
+}]);
+
+
+
+filter——过滤器
+
+
+
+
+
+https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=4124316699,2308502306&fm=173&app=25&f=JPEG?w=218&h=146&s=CD302CD44C4644CC1E0275D203008099
+
+ng-src
+ng-href
+ng-hide
+ng-show
+
+ng-clack

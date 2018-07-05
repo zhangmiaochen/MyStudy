@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="angular.js"></script>
+    <title>Document</title>
+</head>
+
+<body ng-init="a=false;b=12">
+    <input type="button" value="显示隐藏" ng-click="a=!a">
+    <div style="background: #ccc;width:300px;height:300px;" ng-hide="a">
+
+    </div>
+    <span ng-clack>{{b}}</span>
+</body>
+
+</html>

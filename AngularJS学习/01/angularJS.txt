@@ -65,3 +65,18 @@ ng-app      范围
 ng-click
 ng-init
 
+
+
+Controller——控制器：
+1.放JS代码
+2.桥梁：
+
+
+
+1个页面里：
+很多个module
+
+1个module里：
+很多个Controller
+
+
