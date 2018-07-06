@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="test">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="angular.js"></script>
+    <title>Document</title>
+    <script>
+        var app = angular.module("test", []);
+        app.controller("cont1", function($scope, $http) {
+            //$http.get(url,参数);
+            //$http.post();
+            /*$http.get("http://www.weather.com.cn/data/sk/101010100.html", {
+                params: {
+                    a: 12,
+                    b: 5
+                },
+                responseType: "json",
+            }).then(function(res) {
+                    alert("成功了");
+                },
+                function(msg) {
+                    console.log(msg);
+                });*/
+            $http.get("http://www.weather.com.cn/data/sk/101010100.html", {
+                params: {
+                    a: 12,
+                    b: 5
+                }
+            }).success(function(res) {
+                alert("成功了");
+            }).error(function(msg) {
+                console.log(msg);
+            });
+        });
+    </script>
+</head>
+
+<body ng-controller="cont1">
+
+</body>
+
+</html>
