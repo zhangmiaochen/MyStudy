@@ -47,3 +47,94 @@ v-on：click简写为@click
     class和style
         :class=""   v-bind:class=""
         :style=""   v-bind:style=""
+
+
+    :class="[red]" 这个red是数据
+    ：class="[red,b,c,d]"
+
+    :class="{red:true,blue:true}"
+
+    :class="json"
+    
+
+
+    style:
+    :style="[c]"
+    :style="[c,d]"
+            注意:复合样式，采用驼峰命名法
+    :style="json"
+
+    模板：
+        {{msg}}         数据更新模板变化
+        {{*msg}}        数据只绑定一次
+        {{{msg}}}       HTML转义输出
+
+
+过滤器->过滤模板数据
+        系统提供了一些常用的过滤器
+        {{msg|filterA}}
+        {{msg|filterA|filterB}}
+
+        uppercase   eg:{{"welcome" |uppercase}}
+        lowercase   eg:{{"welcome" |lowercase}}
+        capitalize  eg:{{"welcome" |capitalize}}
+
+        currency    钱
+        {{msg|filterA 参数}}
+
+
+交互：
+    $http   (ajax)——angular
+
+    如果vue想做交互
+    引入：vue-resouce
+
+    get:
+        获取一个普通文本数据
+        get: function() {
+            this.$http.get("a.txt").then(function(res) {
+                console.log(res);
+                alert(res.data);
+              }, function(res) {
+                 alert(res.data);
+            });
+        }
+        给服务发送数据：最多
+                get: function() {
+                    this.$http.get("get.php", {
+                        a: 1,
+                        b: 2
+                    }).then(function(res) {
+                        alert(res.data);
+                    }, function(msg) {
+                        alert(msg.data);
+                    })
+                }
+                    
+    post:
+                this.$http.post("post.php", {
+                    a: 1,
+                    b: 2
+                    }, {
+                    emulateJson: true
+                }).then(function(res) {
+                    alert(res.data);
+                    }, function(msg) {
+                    alert(msg.data);
+                });    
+
+    jsonp:
+                this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su", {
+                    params: {
+                        wd: "a",
+                        cb: "jQuery110208900845516700213_1531295422785"
+                    },
+                    jsonp: 'cb',//callback名字，默认名字就是callback
+                    jsonpCallback: "jQuery110208900845516700213_1531295422785"
+                }).then(function(res) {
+                    alert(res.data.s);
+                }, function(msg) {
+                    console.log(msg);
+                });
+
+

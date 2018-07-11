@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+    <script src="vue-resource.js"></script>
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            new Vue({
+                el: "#box",
+                data: {
+
+                },
+                methods: {
+                    get: function() {
+                        this.$http.get("a.txt").then(function(res) {
+                            console.log(res);
+                            alert(res.data);
+                        }, function(res) {
+                            alert(res.data);
+                        });
+                    },
+                    get2: function() {
+                        this.$http.get("get.php", {
+                            params: {
+                                a: 1,
+                                b: 2
+                            }
+                        }).then(function(res) {
+                            alert(res.data);
+                        }, function(msg) {
+                            alert(msg.data);
+                        })
+                    },
+                    post: function() {
+                        this.$http.post("post.php", {
+                            params: {
+                                a: 1,
+                                b: 2
+                            }
+                        }, {
+                            emulateJson: true
+                        }).then(function(res) {
+                            alert(res.data);
+                        }, function(msg) {
+                            alert(msg.data);
+                        });
+                    },
+                    jsonp: function() {
+                        this.$http.jsonp("https://sug.so.360.cn/suggest?encodein=utf-8&encodeout=utf-8", {
+                            params: {
+                                word: 'a'
+                            }
+                        }, {
+                            emulateJson: true
+                        }).then(function(res) {
+                            console.log(res.data);
+                        }, function(msg) {
+                            alert(msg.data);
+                        });
+                    },
+                    bdjsonp: function() {
+                        this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su", {
+                            params: {
+                                wd: "a",
+                                cb: "jQuery110208900845516700213_1531295422785"
+                            },
+                            jsonp: 'cb',
+                            jsonpCallback: "jQuery110208900845516700213_1531295422785"
+                        }).then(function(res) {
+                            alert(res.data.s);
+                        }, function(msg) {
+                            console.log(msg);
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <input type="button" value="按钮" @click="bdjsonp()">
+    </div>
+</body>
+
+</html>

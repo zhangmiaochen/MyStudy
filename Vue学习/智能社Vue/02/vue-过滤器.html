@@ -6,27 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="vue.js"></script>
-    <style>
-        .red {
-            color: red;
-        }
-        
-        .blue {
-            background: blue;
-        }
-    </style>
     <title>Document</title>
     <script>
         window.onload = function() {
             new Vue({
                 el: "#box",
                 data: {
-                    red: "red",
-                    blue: "blue",
-                    json: {
-                        red: true,
-                        blue: false
-                    }
+                    a: "abdfsfa"
                 }
             });
         }
@@ -35,9 +21,13 @@
 
 <body>
     <div id="box">
-        <strong :class="[red,blue]">文字</strong>
-        <strong :class="{red:true,blue:true}">文字</strong>
-        <strong :class="json">文字</strong>
+        {{"welcome"|uppercase}}
+        <br> {{"WELCOME" | lowercase}}
+        <br> {{"welcome" | capitalize}}
+        <br> {{"WELCOME" | lowercase | capitalize}}
+        <br>{{12|currency}}
+        <br>{{12|currency "￥"}}
+
     </div>
 </body>
 
